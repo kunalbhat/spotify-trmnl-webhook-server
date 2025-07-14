@@ -41,13 +41,9 @@ This project exposes a lightweight serverless API that returns a JSON payload of
 }
 ```
 
----
-
 ## 🖼️ Example Use Case
 
 The plugin can be configured in TRMNL with polling every 5–15 minutes, rendering a grid wall of album art with track info underneath — ideal for a semi-static visual display that evolves throughout the day.
-
----
 
 ## 🚀 Setup
 
@@ -66,17 +62,6 @@ The plugin can be configured in TRMNL with polling every 5–15 minutes, renderi
    ```
    https://your-app.vercel.app/api/spotify
    ```
-
----
-
-## 🧠 Ideas for Expansion
-
-- Show top albums or artists from `top/tracks` or `top/artists`
-- Group album wall by day
-- Visualize listening stats or genre bubbles
-- Add caching to reduce Spotify API calls
-
----
 
 ## 📄 License
 
