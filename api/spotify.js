@@ -1,14 +1,8 @@
-// api/spotify.js — Vercel-compatible API route
-
+// api/spotify.js
 import fetch from "node-fetch";
 
-const {
-  SPOTIFY_REFRESH_TOKEN,
-  SPOTIFY_CLIENT_ID,
-  SPOTIFY_CLIENT_SECRET,
-  TRMNL_API_KEY,
-  TRMNL_WEBHOOK_URL,
-} = process.env;
+const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } =
+  process.env;
 
 const basicAuth = Buffer.from(
   `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
@@ -28,7 +22,6 @@ async function getAccessToken() {
   });
 
   const data = await res.json();
-  if (!res.ok) throw new Error(`Token error: ${data.error || res.status}`);
   return data.access_token;
 }
 
@@ -55,29 +48,20 @@ function transformToTMRNLFormat(items) {
   }));
 }
 
+// Vercel handler
 export default async function handler(req, res) {
-  if (req.method !== "GET") return res.status(405).end();
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   try {
     const token = await getAccessToken();
     const data = await fetchRecentlyPlayed(token);
     const payload = transformToTMRNLFormat(data.items);
 
-    const tmrnlRes = await fetch(TRMNL_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-plugin-key": TRMNL_API_KEY,
-      },
-      body: JSON.stringify({ items: payload }),
-    });
-
-    const responseText = await tmrnlRes.text();
-    res
-      .status(200)
-      .json({ success: true, sent: payload.length, tmrnlRes: responseText });
+    res.status(200).json({ items: payload });
   } catch (err) {
-    console.error("Error:", err);
+    console.error("❌ Error:", err);
     res.status(500).json({ error: err.message });
   }
 }
