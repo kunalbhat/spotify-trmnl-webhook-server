@@ -1,9 +1,6 @@
-// server.mjs - Vercel-compatible using serverless functions (via API Routes)
+// api/spotify.js — Vercel-compatible API route
 
 import fetch from "node-fetch";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const {
   SPOTIFY_REFRESH_TOKEN,
@@ -31,6 +28,7 @@ async function getAccessToken() {
   });
 
   const data = await res.json();
+  if (!res.ok) throw new Error(`Token error: ${data.error || res.status}`);
   return data.access_token;
 }
 
@@ -57,7 +55,7 @@ function transformToTMRNLFormat(items) {
   }));
 }
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).end();
 
   try {
@@ -83,5 +81,3 @@ async function handler(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
-
-export default handler;
