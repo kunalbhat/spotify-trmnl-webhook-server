@@ -28,7 +28,7 @@ This project exposes a lightweight serverless API that returns a JSON payload of
 
 ### Example Output
 
-````json
+```json
 {
   "items": [
     {
@@ -39,6 +39,7 @@ This project exposes a lightweight serverless API that returns a JSON payload of
     }
   ]
 }
+```
 
 ---
 
@@ -53,18 +54,18 @@ The plugin can be configured in TRMNL with polling every 5–15 minutes, renderi
 1. Clone this repo
 2. Add a `.env` file locally (or define in Vercel Dashboard):
 
-    ```env
-    SPOTIFY_CLIENT_ID=your_client_id
-    SPOTIFY_CLIENT_SECRET=your_client_secret
-    SPOTIFY_REFRESH_TOKEN=your_refresh_token
-    ```
+   ```env
+   SPOTIFY_CLIENT_ID=your_client_id
+   SPOTIFY_CLIENT_SECRET=your_client_secret
+   SPOTIFY_REFRESH_TOKEN=your_refresh_token
+   ```
 
 3. Deploy to [Vercel](https://vercel.com)
 4. Use your live endpoint in your TRMNL plugin:
 
-    ```
-    https://your-app.vercel.app/api/spotify
-    ```
+   ```
+   https://your-app.vercel.app/api/spotify
+   ```
 
 ---
 
@@ -103,4 +104,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-````
+```
