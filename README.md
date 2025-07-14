@@ -4,6 +4,8 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Powered by Spotify](https://img.shields.io/badge/Powered%20by-Spotify-1ED760.svg)
 
+<img width="742" height="446" alt="Screenshot 2025-07-14 at 2 33 30 PM" src="https://github.com/user-attachments/assets/7472bd02-3846-4dad-8782-c254d22b108a" />
+
 This project exposes a lightweight serverless API that returns a JSON payload of your **recently played Spotify tracks**, formatted for use in a [TRMNL](https://usetrmnl.com/) private plugin. TRMNL polls the endpoint periodically and displays an album art grid on the device.
 
 ## 🔧 Tech Stack
