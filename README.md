@@ -1,4 +1,4 @@
-# 🎵 TRMNL + Spotify Plugin: Recently Played Display
+# TRMNL + Spotify Plugin: Recently Played Display
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -8,7 +8,7 @@
 
 This project exposes a lightweight serverless API that returns a JSON payload of your **recently played Spotify tracks**, formatted for use in a [TRMNL](https://usetrmnl.com/) private plugin. TRMNL polls the endpoint periodically and displays an album art grid on the device.
 
-## 🔧 Tech Stack
+## Tech Stack
 
 - **Vercel Serverless Function** (`api/spotify.js`)
 - **Spotify Web API** (OAuth with refresh token)
@@ -17,7 +17,7 @@ This project exposes a lightweight serverless API that returns a JSON payload of
 
 ---
 
-## 🧩 What It Does
+## What It Does
 
 - Authenticates via Spotify refresh token
 - Fetches the last 10 recently played tracks
@@ -43,11 +43,11 @@ This project exposes a lightweight serverless API that returns a JSON payload of
 }
 ```
 
-## 🖼️ Example Use Case
+## Example Use Case
 
 The plugin can be configured in TRMNL with polling every 5–15 minutes, rendering a grid wall of album art with track info underneath — ideal for a semi-static visual display that evolves throughout the day.
 
-## 🚀 Setup
+## Setup
 
 1. Clone this repo
 2. Add a `.env` file locally (or define in Vercel Dashboard):
@@ -65,7 +65,7 @@ The plugin can be configured in TRMNL with polling every 5–15 minutes, renderi
    https://your-app.vercel.app/api/spotify
    ```
 
-## 📄 License
+## License
 
 MIT License
 
