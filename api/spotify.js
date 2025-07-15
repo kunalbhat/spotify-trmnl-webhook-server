@@ -40,12 +40,19 @@ async function fetchRecentlyPlayed(accessToken) {
 }
 
 function transformToTMRNLFormat(items) {
-  return items.map(({ track, played_at }) => ({
-    title: track.name,
-    subtitle: track.artists.map((a) => a.name).join(", "),
-    image_url: track.album.images[0]?.url,
-    meta: new Date(played_at).toLocaleString(),
-  }));
+  const seen = new Set();
+  return items
+    .filter(({ track }) => {
+      if (seen.has(track.id)) return false;
+      seen.add(track.id);
+      return true;
+    })
+    .map(({ track, played_at }, index, arr) => ({
+      title: track.name,
+      subtitle: track.artists.map((a) => a.name).join(", "),
+      image_url: track.album.images[0]?.url,
+      meta: `Track ${arr.length - index}`,
+    }));
 }
 
 // Vercel handler
